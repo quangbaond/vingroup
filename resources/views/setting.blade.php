@@ -25,10 +25,10 @@
                     <img style="width:30px" src="/static/icon/setting/1.png" alt="">
                 </div>
                 <div class="col-6">
-                    <b style="color: #3582b3">Số điện thoại</b>
+                    <b style="color: rgb(235, 71, 24)">Số điện thoại</b>
                 </div>
                 <div class="col-4">
-                    <b style="color: #3582b3">{{ auth()->user()->username }}</b>
+                    <b style="color: rgb(235, 71, 24)">{{ auth()->user()->username }}</b>
                 </div>
             </div>
         </div>
@@ -41,7 +41,7 @@
                         <img width="30px" src="/static/icon/setting/2.png" alt="">
                     </div>
                     <div class="col">
-                        <b style="color: #3582b3">Xác nhận tên thật</b>
+                        <b style="color: rgb(235, 71, 24)">Xác nhận tên thật</b>
                     </div>
                     <div class="col">
                         <b style="color: green">Đã hoàn thành</b>
@@ -55,7 +55,7 @@
                             <img width="30px" src="/static/icon/setting/3.png" alt="">
                         </div>
                         <div class="col">
-                            <b style="color: #3582b3">Thay đổi mật khẩu đăng nhập</b>
+                            <b style="color: rgb(235, 71, 24)">Thay đổi mật khẩu đăng nhập</b>
                         </div>
                     </div>
                 </a>
@@ -67,7 +67,7 @@
                             <img width="30px" src="/static/icon/setting/4.png" alt="">
                         </div>
                         <div class="col">
-                            <b style="color: #3582b3">Thay đổi mật khẩu thanh toán</b>
+                            <b style="color: rgb(235, 71, 24)">Thay đổi mật khẩu thanh toán</b>
                         </div>
                     </div>
                 </a>

@@ -11,7 +11,7 @@ body {
     width: 100%;
     margin: 0 auto;
     padding: 20px;
-    background-color: #3582B3;
+    background-color: rgb(235, 71, 24);
     overflow: hidden;
     position: relative;
     display: block;
@@ -31,7 +31,7 @@ body {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 .notification {
-    background-color: #3582B3;
+    background-color: rgb(235, 71, 24);
     color: white;
     text-align: center;
     padding: 10px;
@@ -47,7 +47,7 @@ body {
 #i{
     width: 5px;
     height: 20px;
-    background-color: #3582B3;
+    background-color: rgb(235, 71, 24);
     margin-right: 10px;
 }
 .product_title{
@@ -97,7 +97,7 @@ a{
     text-decoration: none !important;
 }
 #header {
-    background-color: #3582B3;
+    background-color: rgb(235, 71, 24);
     color: white;
     padding: 10px 0;
 }
@@ -109,7 +109,7 @@ a{
 }
 .btn-cash {
     color: #ffffff;
-    background: #3582b3;
+    background: rgb(235, 71, 24);
     width: 100%;
 }
 td,th {

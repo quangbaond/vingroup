@@ -2,7 +2,7 @@
 @section('content')
 @include('includes.banner')
 <div id="main">
-    <div class="card">
+    {{-- <div class="card">
         <div class="card-body">
             <div class="row">
                 <div class="col-3" style="text-align: center">
@@ -55,7 +55,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <div class="notification">
         <div class="icon">
             <img src="/static/icon/loa.png" alt="">

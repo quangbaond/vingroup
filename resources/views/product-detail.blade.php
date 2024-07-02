@@ -17,11 +17,11 @@
                 <div class="row mx-2 p-2" style="justify-content: center; text-align:center; background: #f5f5f5; border-radius:10px">
                     <div class="col-6">
                         <p style="font-size: 18px">Mỗi cổ tức</p>
-                        <p><span style="color: #3582b3;font-size: 18px">{{ number_format($product->amount_invested) }}</span><span> VND</span></p>
+                        <p><span style="color: rgb(235, 71, 24);font-size: 18px">{{ number_format($product->amount_invested) }}</span><span> VND</span></p>
                     </div>
                     <div class="col-6">
                         <p style="font-size: 18px">Chu kì đấu thầu</p>
-                        <p><span style="color: #3582b3;font-size: 18px">{{ $product->time_invest }}</span> <span>Phút</span></p>
+                        <p><span style="color: rgb(235, 71, 24);font-size: 18px">{{ $product->time_invest }}</span> <span>Phút</span></p>
                     </div>
                 </div>
                 <hr>
@@ -34,7 +34,7 @@
         </div>
         <div class="card">
             <div class="card-body">
-                <h5 style="color: #3582b3; text-align: center">Chi tiết đấu thầu</h5>
+                <h5 style="color: rgb(235, 71, 24); text-align: center">Chi tiết đấu thầu</h5>
                 <hr>
                 <table class="table-bordered table">
                     <tr>
