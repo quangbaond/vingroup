@@ -112,7 +112,14 @@ a{
     background: rgb(235, 71, 24);
     width: 100%;
 }
+.btn-sm {
+    color: #ffffff;
+    background: rgb(235, 71, 24);
+}
 td,th {
     font-size: 14px;
     align-content: center !important;
+}
+.progress-bar {
+    background-color: rgb(235, 71, 24);
 }
