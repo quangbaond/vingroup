@@ -7,7 +7,7 @@
     <title>{{ env('APP_NAME') }} {{ isset($title) ? $title : '' }}</title>
     <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/style.css?v=1">
     <style>
 
     </style>
