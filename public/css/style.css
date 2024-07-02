@@ -72,7 +72,7 @@ body {
     margin: 0;
 }
 .product_item{
-    background: rgb(235, 71, 24);
+    /* background: rgb(235, 71, 24); */
     box-shadow: 0 0 0.15rem rgb(235, 71, 24);
     padding: 5px;
 }
