@@ -9,16 +9,16 @@
             <div class="card-body">
                 <h6 class="card-title">{{ $product->name }}</h6>
                 <div class=" row infomation justify-content-center">
-                    <div class="col-3">
+                    <div class="col-4">
                         <div><span style="color: #28a3e6; font-size: 14px">{{ $product->profit_everyday }}</span><span>%</span></div>
                         <p >Lợi nhuận</p>
                     </div>
-                    <div class="col-3">
+                    <div class="col-4">
                         <div><span style="color: #28a3e6; font-size: 14px">{{ $product->time_invest }} </span><span>Phút</span></div>
                         <p >Ngày</p>
                     </div>
-                    <div class="col-6">
-                        <div><span style="color: #28a3e6; font-size: 14px">{{ $product->min_invest }}</span><span> đ</span></div>
+                    <div class="col-4">
+                        <div><span style="color: #28a3e6; font-size: 14px">{{ number_format($product->min_invest) }}</span><span> đ</span></div>
                         <p style="font-size: 14px">Số tiền đấu thầu</p>
                     </div>
                 </div>
