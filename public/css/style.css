@@ -72,8 +72,8 @@ body {
     margin: 0;
 }
 .product_item{
-    background: #a2daff;
-    box-shadow: 0 0 0.15rem #a2daff;
+    background: rgb(235, 71, 24);
+    box-shadow: 0 0 0.15rem rgb(235, 71, 24);
     padding: 5px;
 }
 .progress {
@@ -102,7 +102,7 @@ a{
     padding: 10px 0;
 }
 .information_profile{
-    background: linear-gradient(to bottom,  #58a5e4 0%,#2b61a7 100%);
+    background: linear-gradient(to bottom,  rgb(245, 167, 145) 0%, rgb(235, 71, 24) 100%);
     color: #fff;
     /* min-height: 300px; */
     padding: 10px;
