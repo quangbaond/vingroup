@@ -17,7 +17,7 @@
                 <div class="row mx-2 p-2" style="justify-content: center; text-align:center; background: #f5f5f5; border-radius:10px">
                     <div class="col-6">
                         <p style="font-size: 18px">Mỗi cổ tức</p>
-                        <p><span style="color: rgb(235, 71, 24);font-size: 16px">{{ number_format($product->amount_invested) }}</span><span> VND</span></p>
+                        <p><span style="color: rgb(235, 71, 24);font-size: 16px">{{ number_format($product->min_invest) }}</span><span> VND</span></p>
                     </div>
                     <div class="col-6">
                         <p style="font-size: 18px">Chu kì đấu thầu</p>
