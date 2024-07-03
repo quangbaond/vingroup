@@ -1,7 +1,7 @@
 <div class="products">
     <div class="product_title">
         <div id="i"></div>
-        <span>{{ $title }}</span>
+        <span>{{ $product->name }}</span>
     </div>
     <div class="product_item my-2">
         <div class="card">
