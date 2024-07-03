@@ -17,7 +17,7 @@
     <div class="col-3">
         <a href="{{ route('about') }}">
             <img style="width: 30px" src="/static/icon/footer/3.png" alt="">
-            <div>Tìm thấy</div>
+            <div>CSKH</div>
         </a>
 
     </div>
