@@ -123,3 +123,8 @@ td,th {
 .progress-bar {
     background-color: rgb(235, 71, 24);
 }
+
+#smartsupp-widget-container div {
+    bottom: 55px !important;
+}
+
