@@ -43,7 +43,7 @@
                     </tr>
                     <tr>
                         <td>Số tiền dự án：</td>
-                        <td style="color: red">{{ $product->amount_invested }} VND</td>
+                        <td style="color: red">{{ number_format($product->amount_invested) }} VND</td>
                     </tr>
                     <tr>
                         <td>Số tiền đấu thầu：</td>
