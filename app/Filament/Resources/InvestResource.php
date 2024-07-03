@@ -68,7 +68,7 @@ class InvestResource extends Resource
                     2 => 'Hủy bỏ',
                 ])->afterStateUpdated(function ($record, $state) {
                     if ($state == 1) {
-                        $record->user->balance += $record->amount + $record->amount * 0.1;
+                            $record->user->balance += $record->amount + $record->amount;
                         $record->user->save();
                     }
                 }),
