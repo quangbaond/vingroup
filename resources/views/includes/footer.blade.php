@@ -15,7 +15,7 @@
 
     </div>
     <div class="col-3">
-        <a href="{{ route('about') }}">
+        <a href="{{ env('SMARTSUPP_URL') }}">
             <img style="width: 30px" src="/static/icon/footer/3.png" alt="">
             <div>CSKH</div>
         </a>
