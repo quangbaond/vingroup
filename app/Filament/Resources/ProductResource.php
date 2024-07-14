@@ -12,6 +12,7 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Support\RawJs;
 
 class ProductResource extends Resource
 {
@@ -26,74 +27,80 @@ class ProductResource extends Resource
         return $form
             ->schema([
                 Forms\Components\Section::make('Thông tin cơ bản')
-                ->schema([
-                    Forms\Components\Select::make('category_id')
-                        ->relationship('category', 'name')
-                        ->required()
-                        ->label('Danh mục'),
-                    Forms\Components\TextInput::make('name')
-                        ->required()
-                        ->label('Tên dự án'),
-                    Forms\Components\FileUpload::make('image')
-                        ->directory('images/products')
-                        ->columnSpanFull()
-                        ->image()
-                        ->previewable()
-                        ->downloadable(true)
-                        ->reorderable(true)
-                        ->imageEditor(true)
-                        ->openable(true)
-                        ->label('Hình ảnh')
-                        ->required(),
-                    Forms\Components\TextInput::make('profit_everyday')
-                        ->required()
-                        ->numeric()
-                        ->label('Lợi nhuận mỗi ngày'),
-                    Forms\Components\TextInput::make('time_invest')
-                        ->required()
-                        ->numeric()
-                        ->label('Thời gian đấu tầu'),
-                    Forms\Components\TextInput::make('progress')
-                        ->required()
-                        ->numeric()
-                        ->minValue(0)
-                        ->maxValue(100)
-                        ->label('Tiến độ'),
-                    Forms\Components\TextInput::make('amount_total')
-                        ->required()
-                        ->numeric()
-                        ->label('Số tiền cổ tức'),
-                    Forms\Components\TextInput::make('amount_invested')
-                        ->required()
-                        ->numeric()
-                        ->label('Số tiền quy mô dự án'),
-                    Forms\Components\TextInput::make('min_invest')
-                        ->required()
-                        ->numeric()
-                        ->label('Số tiền đầu tư tối thiểu'),
-                    Forms\Components\Textarea::make('times_invest_decision')
-                        ->required()
-                        ->label('Thời gian giải quyết'),
-                    Forms\Components\Textarea::make('book_invest')
-                        ->label('Sổ đầu tư'),
-                    Forms\Components\Textarea::make('security')
-                        ->label('Bảo mật'),
-                    Forms\Components\Textarea::make('description')
-                        ->label('Mô tả'),
-                    Forms\Components\Textarea::make('sort_description')
-                        ->label('Mô tả ngắn'),
-                    Forms\Components\Textarea::make('interest_risk')
-                        ->label('Đấu thầu không có rủi ro'),
-                    Forms\Components\Textarea::make('profit_calculation')
-                        ->label('Tính toán lợi nhuận'),
-                    Forms\Components\Select::make('status')
-                        ->label('Trạng thái')
-                        ->options([
-                            0 => 'Khóa',
-                            1 => 'Kích hoạt',
-                        ]),
+                    ->schema([
+                        Forms\Components\Select::make('category_id')
+                            ->relationship('category', 'name')
+                            ->required()
+                            ->label('Danh mục'),
+                        Forms\Components\TextInput::make('name')
+                            ->required()
+                            ->label('Tên dự án'),
+                        Forms\Components\FileUpload::make('image')
+                            ->directory('images/products')
+                            ->columnSpanFull()
+                            ->image()
+                            ->previewable()
+                            ->downloadable(true)
+                            ->reorderable(true)
+                            ->imageEditor(true)
+                            ->openable(true)
+                            ->label('Hình ảnh')
+                            ->required(),
+                        Forms\Components\TextInput::make('profit_everyday')
+                            ->required()
+                            ->numeric()
+                            ->label('Lợi nhuận mỗi ngày'),
+                        Forms\Components\TextInput::make('time_invest')
+                            ->required()
+                            ->numeric()
+                            ->label('Thời gian đấu tầu'),
+                        Forms\Components\TextInput::make('progress')
+                            ->required()
+                            ->numeric()
+                            ->minValue(0)
+                            ->maxValue(100)
+                            ->label('Tiến độ'),
+                        Forms\Components\TextInput::make('amount_total')
+                            ->required()
+                            ->numeric()
+                            ->mask(RawJs::make('$money($input)'))
+                            ->stripCharacters(',')
+                            ->label('Số tiền cổ tức'),
+                        Forms\Components\TextInput::make('amount_invested')
+                            ->required()
+                            ->numeric()
+                            ->mask(RawJs::make('$money($input)'))
+                            ->stripCharacters(',')
+                            ->label('Số tiền quy mô dự án'),
+                        Forms\Components\TextInput::make('min_invest')
+                            ->required()
+                            ->numeric()
+                            ->mask(RawJs::make('$money($input)'))
+                            ->stripCharacters(',')
+                            ->label('Số tiền đầu tư tối thiểu'),
+                        Forms\Components\Textarea::make('times_invest_decision')
+                            ->required()
+                            ->label('Thời gian giải quyết'),
+                        Forms\Components\Textarea::make('book_invest')
+                            ->label('Sổ đầu tư'),
+                        Forms\Components\Textarea::make('security')
+                            ->label('Bảo mật'),
+                        Forms\Components\Textarea::make('description')
+                            ->label('Mô tả'),
+                        Forms\Components\Textarea::make('sort_description')
+                            ->label('Mô tả ngắn'),
+                        Forms\Components\Textarea::make('interest_risk')
+                            ->label('Đấu thầu không có rủi ro'),
+                        Forms\Components\Textarea::make('profit_calculation')
+                            ->label('Tính toán lợi nhuận'),
+                        Forms\Components\Select::make('status')
+                            ->label('Trạng thái')
+                            ->options([
+                                0 => 'Khóa',
+                                1 => 'Kích hoạt',
+                            ]),
 
-                ])->columns(2),
+                    ])->columns(2),
             ]);
     }
 

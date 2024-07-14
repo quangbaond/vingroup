@@ -13,6 +13,7 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Support\RawJs;
 
 class UserResource extends Resource
 {
@@ -27,39 +28,42 @@ class UserResource extends Resource
         return $form
             ->schema([
                 Forms\Components\Section::make('Thông tin cơ bản')
-                ->schema([
-                    Forms\Components\TextInput::make('username')
-                        ->label('Tên đăng nhập')
-                        ->disabled(function ($record) {
-                            return $record->exists;
-                        }),
-                    Forms\Components\Select::make('role')
-                        ->label('Vai trò')
-                        ->options([
-                            0 => 'Admin',
-                            1 => 'Người dùng',
-                        ]),
-                    Forms\Components\TextInput::make('balance')
-                        ->label('Số dư'),
-                    Forms\Components\Select::make('status')
-                        ->label('Trạng thái')
-                        ->options([
-                            0 => 'Khóa',
-                            1 => 'Kích hoạt',
-                        ]),
-                    Forms\Components\TextInput::make('id_card')
-                        ->label('CMND'),
-                ]),
+                    ->schema([
+                        Forms\Components\TextInput::make('username')
+                            ->label('Tên đăng nhập')
+                            ->disabled(function ($record) {
+                                return $record->exists;
+                            }),
+                        Forms\Components\Select::make('role')
+                            ->label('Vai trò')
+                            ->options([
+                                0 => 'Admin',
+                                1 => 'Người dùng',
+                            ]),
+                        Forms\Components\TextInput::make('balance')
+                            ->mask(RawJs::make('$money($input)'))
+                            ->stripCharacters(',')
+                            ->numeric()
+                            ->label('Số dư'),
+                        Forms\Components\Select::make('status')
+                            ->label('Trạng thái')
+                            ->options([
+                                0 => 'Khóa',
+                                1 => 'Kích hoạt',
+                            ]),
+                        Forms\Components\TextInput::make('id_card')
+                            ->label('CMND'),
+                    ]),
 
                 Forms\Components\Section::make('Mật khẩu')
-                ->schema([
-                    Forms\Components\TextInput::make('password')
-                        ->label('Mật khẩu')
-                        ->password()
-                        ->required(function ($record) {
-                            return !$record->exists;
-                        }),
-                ]),
+                    ->schema([
+                        Forms\Components\TextInput::make('password')
+                            ->label('Mật khẩu')
+                            ->password()
+                            ->required(function ($record) {
+                                return !$record->exists;
+                            }),
+                    ]),
             ]);
     }
 
@@ -73,23 +77,25 @@ class UserResource extends Resource
                         0 => 'Admin',
                         1 => 'Người dùng',
                     ]),
-                Tables\Columns\TextInputColumn::make('balance')->label('Số dư')
-                ->rules([
-                    'numeric',
-                    'required',
-                ])->type('number')
-                ->beforeStateUpdated(function ($record, $state) {
-                    $type = $state > $record->balance ? 1 : 2;
-                    $amount = $state > $record->balance ? $state - $record->balance : $record->balance - $state;
-                    $record->transactions()->create([
-                        'amount' => $amount,
-                        'user_id' => $record->id,
-                        'type' => $type,
-                        'status' => 1,
-                        'payment_method' => 'Quản tri viên',
-                        'description' => 'Cập nhật số dư',
-                    ]);
-                }),
+                // Tables\Columns\TextInputColumn::make('balance')->label('Số dư')
+                // ->rules([
+                //     'numeric',
+                //     'required',
+                // ])->type('number')
+                // ->beforeStateUpdated(function ($record, $state) {
+                //     $type = $state > $record->balance ? 1 : 2;
+                //     $amount = $state > $record->balance ? $state - $record->balance : $record->balance - $state;
+                //     $record->transactions()->create([
+                //         'amount' => $amount,
+                //         'user_id' => $record->id,
+                //         'type' => $type,
+                //         'status' => 1,
+                //         'payment_method' => 'Quản tri viên',
+                //         'description' => 'Cập nhật số dư',
+                //     ]);
+                // }),
+                Tables\Columns\TextColumn::make('balance')->label('Số dư')
+                    ->formatStateUsing(fn ($state) => number_format($state) . ' VND'),
                 Tables\Columns\SelectColumn::make('status')
                     ->label('Trạng thái')
                     ->options([
@@ -97,7 +103,7 @@ class UserResource extends Resource
                         1 => 'Kích hoạt',
                     ]),
                 //id card
-                Tables\Columns\TextColumn::make('id_card')->label('CMND'),
+                // Tables\Columns\TextColumn::make('id_card')->label('CMND'),
                 Tables\Columns\TextColumn::make('created_at')->label('Ngày tạo'),
 
             ])
