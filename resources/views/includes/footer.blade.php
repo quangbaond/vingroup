@@ -14,12 +14,17 @@
         </a>
 
     </div>
-    <div class="col-3">
+    {{-- <div class="col-3">
         <a href="{{ env('SMARTSUPP_URL') }}">
             <img style="width: 30px" src="/static/icon/footer/3.png" alt="">
             <div>CSKH</div>
         </a>
-
+    </div> --}}
+    <div class="col-3">
+        <a href="{{ route('about') }}">
+            <img style="width: 30px" src="/static/icon/footer/3.png" alt="">
+            <div>Tìm thấy</div>
+        </a>
     </div>
     <div class="col-3">
         <a href="{{ route('profile') }}">
