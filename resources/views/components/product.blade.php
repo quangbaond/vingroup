@@ -10,8 +10,7 @@
                 <h6 class="card-title">{{ $product->name }}</h6>
                 <div class=" row infomation justify-content-center">
                     <div class="col">
-                        <div><span style="color: #28a3e6; font-size: 14px">{{ number_format($product->profit_everyday) }}</span></div>
-                        <p><span>VND</span></p>
+                        <div><span style="color: #28a3e6; font-size: 14px">{{ number_format($product->profit_everyday) }}</span><span>%</span></div>
                         <p >Lợi nhuận</p>
                     </div>
                     <div class="col">

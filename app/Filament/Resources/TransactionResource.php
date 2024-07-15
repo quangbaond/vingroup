@@ -26,38 +26,38 @@ class TransactionResource extends Resource
         return $form
             ->schema([
                 Forms\Components\Section::make('Thông tin giao dịch')
-                ->schema([
-                    Forms\Components\TextInput::make('amount')
-                        ->label('Số tiền')
-                        ->numeric()
-                        ->required(),
-                    Forms\Components\Select::make('type')
-                        ->label('Phương thức')
-                        ->options([
-                            1 => 'Nạp tiền',
-                            2 => 'Rút tiền',
-                        ])
-                        ->required(),
-                    Forms\Components\Select::make('status')
-                        ->label('Trạng thái')
-                        ->options([
-                            0 => 'Chờ xử lý',
-                            1 => 'Thành công',
-                            2 => 'Thất bại',
-                        ])
-                        ->required(),
-                    Forms\Components\Textarea::make('description')
-                        ->label('Mô tả')
-                        ->required(),
-                    Forms\Components\Select::make('user_id')
-                        ->relationship('user', 'username')
-                        ->label('Người dùng')
-                        ->required(),
-                    Forms\Components\Select::make('user_bank_id')
-                        ->label('Ngân hàng')
-                        ->relationship('userBank', 'bank_name')
-                        ->required()
-                ])
+                    ->schema([
+                        Forms\Components\TextInput::make('amount')
+                            ->label('Số tiền')
+                            ->numeric()
+                            ->required(),
+                        Forms\Components\TextInput::make('type')
+                            ->label('Phương thức')
+                            ->options([
+                                1 => 'Nạp tiền',
+                                2 => 'Rút tiền',
+                            ])
+                            ->required(),
+                        Forms\Components\Select::make('status')
+                            ->label('Trạng thái')
+                            ->options([
+                                0 => 'Chờ xử lý',
+                                1 => 'Thành công',
+                                2 => 'Thất bại',
+                            ])
+                            ->required(),
+                        Forms\Components\Textarea::make('description')
+                            ->label('Mô tả')
+                            ->required(),
+                        Forms\Components\Select::make('user_id')
+                            ->relationship('user', 'username')
+                            ->label('Người dùng')
+                            ->required(),
+                        Forms\Components\Select::make('user_bank_id')
+                            ->label('Ngân hàng')
+                            ->relationship('userBank', 'bank_name')
+                            ->required()
+                    ])
             ]);
     }
 
@@ -73,19 +73,31 @@ class TransactionResource extends Resource
                     ->searchable()
                     ->formatStateUsing(fn ($state) => number_format($state) . ' VND')
                     ->sortable(),
-                Tables\Columns\SelectColumn::make('type')
+                Tables\Columns\TextColumn::make('type')
                     ->label('Phương thức')
-                    ->options([
+                    ->formatStateUsing(fn ($state) => match ($state) {
                         1 => 'Nạp tiền',
                         2 => 'Rút tiền',
-                    ])
+                    })
+                    ->disabled()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('status')
+                Tables\Columns\SelectColumn::make('status')
                     ->label('Trạng thái')
-                    ->formatStateUsing(fn ($state) => match ($state) {
+                    // ->formatStateUsing(fn ($state) => match ($state) {
+                    //     0 => 'Chờ xử lý',
+                    //     1 => 'Thành công',
+                    //     2 => 'Thất bại',
+                    // })
+                    ->options([
                         0 => 'Chờ xử lý',
                         1 => 'Thành công',
                         2 => 'Thất bại',
+                    ])
+                    ->afterStateUpdated(function ($record, $state) {
+                        if ($state == 1 && $record->type == 2) {
+                            $record->user->balance -= $record->amount;
+                            $record->user->save();
+                        }
                     })
                     ->sortable(),
                 Tables\Columns\TextColumn::make('description')
