@@ -1,9 +1,9 @@
 @extends('layouts.app')
 <x-header title="Lịch sử đầu tư" />
 @if(session('success'))
-    <div class="alert alert-success" role="alert">
-        {{ session('success') }}
-    </div>
+<div class="alert alert-success" role="alert">
+    {{ session('success') }}
+</div>
 @endif
 <div id="main">
     <table id="" class="table table-bordered">
@@ -16,7 +16,7 @@
             </tr>
         </thead>
         <tbody>
-        @foreach($invests as $invest)
+            @foreach($invests as $invest)
             <tr>
                 <td>
                     <a style="color: #0a53be !important;" href="{{route('product-detail', $invest->product->slug)}}">
@@ -24,10 +24,20 @@
                     </a>
                 </td>
                 <td>{{ number_format($invest->amount) }} VND</td>
-                <td>{{ $invest->status == 0 ? 'Đang chờ' : ($invest->status == 1 ? 'Xác nhận' : 'Từ chối') }}</td>
+                <td>
+                    @if($invest->status == 0)
+                    <span class="badge badge-warning" style="color: #000">Đang chờ</span>
+                    @elseif($invest->status == 1)
+                    <span class="badge badge-success" style="color: #000">Đã xác nhận</span>
+                    @elseif($invest->status == 2)
+                    <span class="badge badge-danger" style="color: #000">Thành công</span>
+                    @else
+                    <span class="badge badge-danger" style="color: #000">Thất bại</span>
+                    @endif
+                </td>
                 <td>{{ $invest->created_at }}</td>
             </tr>
-        @endforeach
+            @endforeach
 
         </tbody>
     </table>
