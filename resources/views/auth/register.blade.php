@@ -14,7 +14,7 @@
                             @csrf
 
                             <div class="form-group">
-                                <label for="username" class="">Số điện thoại</label>
+                                <label for="username" class="">Tên đăng nhập</label>
 
                                 <div class="col-12">
                                     <input id="username" type="text"
