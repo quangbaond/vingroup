@@ -48,7 +48,7 @@ class TraThuong extends Command
                     // log user
                     Log::info($user);
                     $product = $invest->product;
-                    $loi_nhuan = $invest->amount * $product->profit / 100;
+                    $loi_nhuan = $invest->amount * $product->profit_everyday / 100;
                     $user->balance += $invest->amount + $loi_nhuan;
                     $user->save();
                     $invest->status = 2;
