@@ -1,7 +1,7 @@
 <div id="header">
     <div class="row" style="align-items: center">
         <div class="col-3">
-            <a id="goback" href="{{ url()->previous()}}">
+            <a id="goback" href="{{ route('home') }}">
                 <img style="width:30px" src="/static/icon/goback.png" alt="">
             </a>
         </div>

@@ -32,10 +32,10 @@
                 var a = this.value.replace(/\D/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, ",");
                 this.value = a;
             });
-            document.getElementById('goback').addEventListener('click', function(e) {
-                e.preventDefault();
-                window.history.back();
-            });
+            // document.getElementById('goback').addEventListener('click', function(e) {
+            //     e.preventDefault();
+            //     window.history.back();
+            // });
         }
     </script>
 </body>
