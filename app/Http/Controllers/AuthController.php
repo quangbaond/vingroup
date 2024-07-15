@@ -47,14 +47,14 @@ class AuthController extends Controller
     public function registerPost(Request $request)
     {
         $request->validate([
-            'username' => 'required|unique:users,username|numeric|digits:10',
+            'username' => 'required|unique:users,username|min:6',
             'password' => 'required',
             'company_id' => 'required',
         ], [
             'username.required' => 'Vui lòng nhập tên đăng nhập',
             'username.unique' => 'Tên đăng nhập đã tồn tại',
+            'username.min' => 'Tên đăng nhập phải có ít nhất 6 ký tự',
             'username.numeric' => 'Tên đăng nhập phải là số điện thoại',
-            'username.digits' => 'Tên đăng nhập phải có 10 chữ số',
             'password.required' => 'Vui lòng nhập mật khẩu',
             'company_id.required' => 'Vui lòng nhập mã công ty',
         ]);

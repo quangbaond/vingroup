@@ -19,7 +19,7 @@
                             @csrf
 
                             <div class="form-group row">
-                                <label for="username" class="col-md-3 col-form-label text-md-right">Số điện thoại</label>
+                                <label for="username" class="col-md-3 col-form-label text-md-right">Tên đăng nhập</label>
 
                                 <div class="col-md-9">
                                     <input id="username" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="username" autofocus>
