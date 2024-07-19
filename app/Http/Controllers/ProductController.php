@@ -21,6 +21,11 @@ class ProductController extends Controller
         if(!$request->product_id) abort(404);
         $product = Product::find($request->product_id);
         if(!$product) abort(404);
+
+        $settingTimeInvite = \App\Models\SettingTimeInvite::query()->first();
+
+        if($settingTimeInvite->start_time > now() || $settingTimeInvite->end_time < now()) return redirect()->back()->with('error', 'Không thể đầu tư vào thời gian này');
+
         $amount = $product->min_invest;
 
         if(auth()->user()->balance < $amount) return redirect()->back()->with('error', 'Số dư không đủ để đầu tư');
