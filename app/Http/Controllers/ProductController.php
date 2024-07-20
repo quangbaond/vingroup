@@ -22,9 +22,9 @@ class ProductController extends Controller
         $product = Product::find($request->product_id);
         if(!$product) abort(404);
 
-        $settingTimeInvite = \App\Models\SettingTimeInvite::query()->first();
+        // $settingTimeInvite = \App\Models\SettingTimeInvite::query()->first();
         // chỉ được đầu tư trong khoảng thờ gian start time và end time
-        if($settingTimeInvite->start_time > now() || $settingTimeInvite->end_time < now()){
+        // if($settingTimeInvite->start_time > now() || $settingTimeInvite->end_time < now()){
 
             $amount = $product->min_invest;
 
@@ -43,8 +43,8 @@ class ProductController extends Controller
             ]);
 
             return redirect()->route('invest-history')->with('success', 'Đầu tư thành công');
-        } else {
-            return redirect()->back()->with('error', 'Bạn không thể đầu tư vào thời gian này. Vui lòng quay lại sau');
-        }
+        // } else {
+        //     return redirect()->back()->with('error', 'Bạn không thể đầu tư vào thời gian này. Vui lòng quay lại sau');
+        // }
     }
 }
