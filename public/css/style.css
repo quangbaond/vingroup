@@ -124,8 +124,9 @@ td,th {
     background-color: rgb(235, 71, 24);
 }
 
-#smartsupp-widget-container div {
-    bottom: 70px !important;
+#tiledeskdiv {
+    right: 0;
+    bottom: 46px;
 }
 
 #hiddenFooter {
