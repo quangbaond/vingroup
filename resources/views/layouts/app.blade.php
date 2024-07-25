@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="/css/style.css">
 
     <!-- Smartsupp Live Chat script -->
-    <script type="text/javascript">
+    {{-- <script type="text/javascript">
         var _smartsupp = _smartsupp || {};
         _smartsupp.key = "{{ env('SMARTSUB_KEY') }}";
         window.smartsupp||(function(d) {
@@ -20,8 +20,8 @@
         c.type='text/javascript';c.charset='utf-8';c.async=true;
         c.src='https://www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
         })(document);
-    </script>
-    {{-- <script type="application/javascript">
+    </script> --}}
+    <script type="application/javascript">
         window.tiledeskSettings=
             {
               projectid: "{{ env('CHAT_BIN') }}",
@@ -35,7 +35,7 @@
               js.id=id; js.async=true; js.src="https://chat.binnotech.dev/widget/launch.js";
               fjs.parentNode.insertBefore(js, fjs);
           }(document,'script','tiledesk-jssdk'));
-    </script> --}}
+    </script>
 
 </head>
 
