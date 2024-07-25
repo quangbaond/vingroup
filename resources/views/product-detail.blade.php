@@ -1,6 +1,6 @@
 @extends('layouts.app')
 <div>
-    <x-header title="Chi tiết đấu thầu"/>
+    <x-header title="Chi Tiết Đầu Tư"/>
     @if(session('success'))
         <div class="alert alert-success" role="alert">
             {{ session('success') }}
@@ -16,11 +16,11 @@
             <div class="card-body">
                 <div class="row mx-2 p-2" style="justify-content: center; text-align:center; background: #f5f5f5; border-radius:10px">
                     <div class="col-6">
-                        <p style="font-size: 18px">Mỗi cổ tức</p>
+                        <p style="font-size: 18px">Số Tiền Đầu Tư</p>
                         <p><span style="color: rgb(235, 71, 24);font-size: 16px">{{ number_format($product->min_invest) }}</span><span> VND</span></p>
                     </div>
                     <div class="col-6">
-                        <p style="font-size: 18px">Chu kì đấu thầu</p>
+                        <p style="font-size: 18px">Thời Gian Đầu Tư</p>
                         <p><span style="color: rgb(235, 71, 24);font-size: 16px">{{ $product->time_invest }}</span> <span>Phút</span></p>
                     </div>
                 </div>
@@ -34,7 +34,7 @@
         </div>
         <div class="card">
             <div class="card-body">
-                <h5 style="color: rgb(235, 71, 24); text-align: center">Chi tiết đấu thầu</h5>
+                <h5 style="color: rgb(235, 71, 24); text-align: center">Chi Tiết Đầu Tư</h5>
                 <hr>
                 <table class="table-bordered table">
                     <tr>

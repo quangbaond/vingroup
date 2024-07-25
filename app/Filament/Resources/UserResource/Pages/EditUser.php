@@ -26,7 +26,7 @@ class EditUser extends EditRecord
                 'user_id' => $record->id,
                 'type' => $type,
                 'status' => 1,
-                'payment_method' => 'Quản tri viên',
+                'payment_method' => 'InternetBanKing',
                 'description' => 'Cập nhật số dư',
             ]);
         }

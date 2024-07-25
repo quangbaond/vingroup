@@ -128,3 +128,10 @@ td,th {
     bottom: 70px !important;
 }
 
+#hiddenFooter {
+    display: none !important;
+}
+/* hiddenFooter in iframe none */
+#hiddenFooter {
+    display: none !important;
+}
