@@ -136,3 +136,8 @@ td,th {
 #hiddenFooter {
     display: none !important;
 }
+
+
+#smartsupp-widget-container div {
+    bottom: 70px !important;
+}
