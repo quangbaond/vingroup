@@ -20,7 +20,7 @@
                     <div class="col">
                         <div><span style="color: #28a3e6; font-size: 14px">{{ number_format($product->min_invest) }}</span></div>
                         <p><span> VND</span></p>
-                        <p style="font-size: 14px">Số tiền đấu thầu</p>
+                        <p style="font-size: 14px">Số tiền tối thiểu</p>
                     </div>
                 </div>
                 <div class="row justify-content-center" style="align-items: center">
@@ -28,7 +28,7 @@
                         <div>Quy mô dự án: <span style="color:#28a3e6">{{ number_format($product->amount_invested) }}</span><span>đ</span></div>
                     </div>
                     <div class="col-4" style="text-align:right">
-                        <a style="color: #fff !important" href="{{ route('product-detail', $product->slug) }}" class="btn btn-primary btn-sm">Đấu thấu</a>
+                        <a style="color: #fff !important" href="{{ route('product-detail', $product->slug) }}" class="btn btn-primary btn-sm">Đấu tư</a>
                     </div>
                 </div>
                 <div class="row my-3">
