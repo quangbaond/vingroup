@@ -68,7 +68,6 @@
     </div>
     @foreach($products as $product)
         <x-product :title="'Các quỹ đấu thầu'" :product="$product"/>
-
     @endforeach
     @include('includes.footer')
 </div>

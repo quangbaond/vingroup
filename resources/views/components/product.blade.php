@@ -28,7 +28,7 @@
                         <div>Quy mô dự án: <span style="color:#28a3e6">{{ number_format($product->amount_invested) }}</span><span>đ</span></div>
                     </div>
                     <div class="col-4" style="text-align:right">
-                        <a style="color: #fff !important" href="{{ route('product-detail', $product->slug) }}" class="btn btn-primary btn-sm">Đấu tư1</a>
+                        <a style="color: #fff !important" href="{{ route('product-detail', $product->slug) }}" class="btn btn-primary btn-sm">Đấu tư</a>
                     </div>
                 </div>
                 <div class="row my-3">
