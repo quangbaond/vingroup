@@ -26,7 +26,7 @@
                 @if($invest->status == 1)
                 <td style="width: 150px">
                     <p style="color: rgb(255, 166, 0);margin-bottom :0">{{ number_format($invest->amount) }} VND</p>
-                    <p style="font-size: 12px; color #ccc; margin-bottom :0">{{ $invest->type == 1 ? '(Hoàn tiền đầu tư)' : '(Tiền lời góp vốn)'}}</p>
+                    <p style="font-size: 12px; color #ccc; margin-bottom :0">(Trừ tiền đầu tư)</p>
                 </td>
                 @elseif($invest->status == 2)
                     <td style="width: 150px">
@@ -43,8 +43,7 @@
                 @else
                 <td style="width: 150px">
                     <p style="color: rgb(255, 166, 0);margin-bottom :0">{{ number_format($invest->amount) }} VND</p>
-                    <p style="font-size: 12px; color #ccc; margin-bottom :0">{{ $invest->type == 1 ? '(Hoàn tiền đầu tư)' : '(Tiền lời
-                        góp vốn)'}}</p>
+                    <p style="font-size: 12px; color #ccc; margin-bottom :0">{{ $invest->type == 1 ? '(Hoàn tiền đầu tư)' : '(Tiền lời góp vốn)'}}</p>
                 </td>
                 @endif
                 {{-- <td>
@@ -60,11 +59,11 @@
                 </td> --}}
                 <td>
                     @if($invest->status == 0)
-                    <span class="badge badge-warning" style="color: #000">{{ number_format($invest->balance) }}</span>
+                    <span style="color: #000">{{ number_format($invest->balance) }}</span>
                     @elseif($invest->status == 1)
-                    <span class="badge badge-success" style="color: #000">{{ number_format($invest->balance) }}</span>
+                    <span  style="color: #000">{{ number_format($invest->balance) }}</span>
                     @elseif($invest->status == 2)
-                    <span class="badge badge-success" style="color: #000">{{ number_format($invest->balance + ($invest->amount * $invest->product->profit_everyday / 100)) }}</span>
+                    <span  style="color: #000">{{ number_format($invest->balance + ($invest->amount * $invest->product->profit_everyday / 100)) }}</span>
                     @else
                     <span class="badge badge-danger" style="color: #000">{{
                        number_format($invest->balance +  $invest->product->min_invest) }}</span>
