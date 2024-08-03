@@ -41,6 +41,7 @@
 
 <body>
     @yield('content')
+    <script src="https://use.fontawesome.com/b9bdbd120a.js"></script>
     <script src="/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script>
         window.onload = function() {
