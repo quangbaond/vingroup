@@ -29,13 +29,13 @@
                     <p>{{ $invest->type == 1 ? 'Tiền lãi đầu tư' : 'Tiền lời góp vốn'}}</p>
                 </td>
                 @elseif($invest->status == 2)
-                    <td style="color: green">
-                        <p style="color: rgb(255, 166, 0)"> + {{ number_format($invest->amount) }} VND</p>
+                    <td>
+                        <p style="color: green"> + {{ number_format($invest->amount) }} VND</p>
                         <p>{{ $invest->type == 1 ? 'Tiền lãi đầu tư' : 'Tiền lời góp vốn'}}</p>
                     </td>
                 @elseif($invest->status == 3)
-                    <td style="color: red">
-                        <p style="color: rgb(255, 166, 0)"> - {{ number_format($invest->amount) }} VND</p>
+                    <td>
+                        <p style="red"> - {{ number_format($invest->amount) }} VND</p>
                         <p>{{ $invest->type == 1 ? 'Tiền lãi đầu tư' : 'Tiền lời góp vốn'}}</p>
                     </td>
                 @else
