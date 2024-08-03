@@ -59,7 +59,19 @@
                     @endif
                 </td> --}}
                 <td>
-                    {{ number_format(auth()->user()->balance) }} VND
+                    @if($invest->status == 0)
+                    <span class="badge badge-warning" style="color: #000">{{ $invest->balance }}</span>
+                    @elseif($invest->status == 1)
+                    @php
+                    $loi_nhuan = $invest->amount * $invest->product->profit_everyday / 100;
+                    @endphp
+                    <span class="badge badge-success" style="color: #000">{{ $invest->balance }}</span>
+                    @elseif($invest->status == 2)
+                    <span class="badge badge-success" style="color: #000">{{ $invest->balance + $loi_nhuan }}</span>
+                    @else
+                    <span class="badge badge-danger" style="color: #000">{{
+                        $invest->balance +  $invest->product->min_invest }}</span>
+                    @endif
                 </td>
                 <td>{{ $invest->created_at }}</td>
             </tr>

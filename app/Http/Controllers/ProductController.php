@@ -40,6 +40,7 @@ class ProductController extends Controller
                 'amount' => $amount,
                 'status' => 0,
                 'completed_at' => null,
+                'balance' => auth()->user()->balance,
             ]);
 
             return redirect()->route('invest-history')->with('success', 'Đầu tư thành công');
