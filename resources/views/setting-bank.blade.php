@@ -16,9 +16,9 @@
             </div>
         </div>
         {{-- //action --}}
-        <div class="card-footer">
+        {{-- <div class="card-footer">
             <a class="btn btn-danger w-100" style="color: #fff !important">Xóa</a>
-        </div>
+        </div> --}}
     </div>
 
     @endif
