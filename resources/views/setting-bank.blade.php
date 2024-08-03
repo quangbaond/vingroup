@@ -38,18 +38,19 @@
     // let
     const banks = @json(auth()->user()->banks);
     if(banks.length > 0) {
-        stk.innerHTML = '**** **** **** ' + "{{ $bank->bank_account }}".slice(-4);
+        const bank = banks[0];
+        stk.innerHTML = '**** **** **** ' + "{{ $banks[0]->bank_account }}".slice(-4);
         let cccd = document.getElementById('cccd');
-        cccd.innerHTML = '**** ****' + "{{ $bank->id_card }}".slice(-4);
+        cccd.innerHTML = '**** ****' + "{{ $banks[0]->id_card }}".slice(-4);
 
         document.getElementById('open_stk').addEventListener('click', function() {
             var stk = document.getElementById('stk');
-            if(stk.innerHTML == "{{ $bank->bank_account }}") {
-                stk.innerHTML = '**** ****' + "{{ $bank->bank_account }}".slice(-4);
+            if(stk.innerHTML == "{{ $banks[0]->bank_account }}") {
+                stk.innerHTML = '**** ****' + "{{ $banks[0]->bank_account }}".slice(-4);
                 this.classList.remove('fa-eye');
                 this.classList.add('fa-eye-slash');
             } else {
-                stk.innerHTML = {{ $bank->bank_account }};
+                stk.innerHTML = {{ $banks[0]->bank_account }};
                 this.classList.remove('fa-eye-slash');
                 this.classList.add('fa-eye');
             }
@@ -57,12 +58,12 @@
 
         document.getElementById('open_cccd').addEventListener('click', function() {
             var cccd = document.getElementById('cccd');
-            if(cccd.innerHTML == "{{ $bank->id_card }}") {
-                cccd.innerHTML = '**** ****' + "{{ $bank->id_card }}".slice(-4);
+            if(cccd.innerHTML == "{{ $banks[0]->id_card }}") {
+                cccd.innerHTML = '**** ****' + "{{ $banks[0]->id_card }}".slice(-4);
                 this.classList.remove('fa-eye');
                 this.classList.add('fa-eye-slash');
             } else {
-                cccd.innerHTML = "{{ $bank->id_card }}";
+                cccd.innerHTML = "{{ $banks[0]->id_card }}";
                 this.classList.remove('fa-eye-slash');
                 this.classList.add('fa-eye');
             }
