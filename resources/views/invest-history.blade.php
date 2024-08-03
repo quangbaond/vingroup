@@ -25,18 +25,18 @@
                 </td> --}}
                 @if($invest->status == 1)
                 <td>
-                    <p style="color: rgb(255, 166, 0)">{{ number_format($invest->amount) }} VND</p>
+                    <p style="color: rgb(255, 166, 0);margin-bottom :0">{{ number_format($invest->amount) }} VND</p>
                     <p style="font-size: 12px; color #ccc; margin-bottom :0">{{ $invest->type == 1 ? '(Tiền lãi đầu tư)' : '(Tiền lời góp vốn)'}}</p>
                 </td>
                 @elseif($invest->status == 2)
                     <td>
-                        <p style="color: green"> + {{ number_format($invest->amount) }} VND</p>
+                        <p style="color: green;margin-bottom :0"> + {{ number_format($invest->amount) }} VND</p>
                        <p style="font-size: 12px; color #ccc; margin-bottom :0">{{ $invest->type == 1 ? '(Tiền lãi đầu tư)' : '(Tiền lời góp
                         vốn)'}}</p>
                     </td>
                 @elseif($invest->status == 3)
                     <td>
-                        <p style="red"> - {{ number_format($invest->amount) }} VND</p>
+                        <p style="margin-bottom :0"> - {{ number_format($invest->amount) }} VND</p>
                         <p style="font-size: 12px; color #ccc; margin-bottom :0">{{ $invest->type == 1 ? '(Tiền lãi đầu tư)' : '(Tiền lời góp
                             vốn)'}}</p>
                     </td>
