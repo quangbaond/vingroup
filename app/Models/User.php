@@ -70,4 +70,9 @@ class User extends Authenticatable implements FilamentUser, HasName
     {
         return $this->role === 1;
     }
+
+    public function invests()
+    {
+        return $this->hasMany(Invest::class);
+    }
 }

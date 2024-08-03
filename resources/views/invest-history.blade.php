@@ -9,22 +9,32 @@
     <table id="" class="table table-bordered">
         <thead>
             <tr>
-                <th>Tên danh mục đấu thầu</th>
+                {{-- <th>Tên danh mục đấu thầu</th> --}}
                 <th>Số tiền</th>
-                <th>Trạng thái</th>
-                <th>Ngày</th>
+                <th>Số dư</th>
+                <th>Thời gian</th>
             </tr>
         </thead>
         <tbody>
             @foreach($invests as $invest)
             <tr>
-                <td>
+                {{-- <td>
                     <a style="color: #0a53be !important;" href="{{route('product-detail', $invest->product->slug)}}">
                         {{ $invest->product->name }}
                     </a>
-                </td>
-                <td>{{ number_format($invest->amount) }} VND</td>
+                </td> --}}
+                @if($invest->status == 1)
                 <td>
+                    <p style="color: rgb(255, 166, 0)">{{ number_format($invest->amount) }} VND</p>
+                    <p>{{ $invest->type == 1 ? 'Tiền lãi đầu tư' : 'Tiền lời góp vốn'}}</p>
+                </td>
+                @elseif($invest->status == 2)
+                    <td style="color: green"> + {{ number_format($invest->amount) }} VND</td>
+                @elseif($invest->status == 3)
+                    <td style="color: red"> - {{ number_format($invest->amount) }} VND</td>
+                @else
+                @endif
+                {{-- <td>
                     @if($invest->status == 0)
                     <span class="badge badge-warning" style="color: #000">Đang chờ</span>
                     @elseif($invest->status == 1)
@@ -34,6 +44,9 @@
                     @else
                     <span class="badge badge-danger" style="color: #000">Thất bại</span>
                     @endif
+                </td> --}}
+                <td>
+                    {{ number_format(auth()->user()->balance) }} VND
                 </td>
                 <td>{{ $invest->created_at }}</td>
             </tr>
