@@ -36,9 +36,8 @@
 <script>
     let stk = document.getElementById('stk');
     // let
-    const bank = json_decode({{ $bank }});
-
-    if(bank) {
+    const banks = @json(auth()->user()->banks);
+    if(banks.length > 0) {
         stk.innerHTML = '**** **** **** ' + "{{ $bank->bank_account }}".slice(-4);
         let cccd = document.getElementById('cccd');
         cccd.innerHTML = '**** ****' + "{{ $bank->id_card }}".slice(-4);
