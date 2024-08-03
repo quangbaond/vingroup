@@ -29,7 +29,7 @@ class TraLai extends Command
         $users = User::all();
         foreach ($users as $user) {
             // cộng 5% số dư
-            $user->balance += $user->balance * 0.05;
+            $user->balance += $user->balance * 0.005;
             $user->save();
             // create invest history type 2
             $user->invests()->create([
