@@ -26,24 +26,24 @@
                 @if($invest->status == 1)
                 <td style="width: 150px">
                     <p style="color: rgb(255, 166, 0);margin-bottom :0">{{ number_format($invest->amount) }} VND</p>
-                    <p style="font-size: 12px; color #ccc; margin-bottom :0">{{ $invest->type == 1 ? '(Tiền lãi đầu tư)' : '(Tiền lời góp vốn)'}}</p>
+                    <p style="font-size: 12px; color #ccc; margin-bottom :0">{{ $invest->type == 1 ? '(Hoàn tiền đầu tư)' : '(Tiền lời góp vốn)'}}</p>
                 </td>
                 @elseif($invest->status == 2)
                     <td style="width: 150px">
                         <p style="color: green;margin-bottom :0"> + {{ number_format($invest->amount) }} VND</p>
-                       <p style="font-size: 12px; color #ccc; margin-bottom :0">{{ $invest->type == 1 ? '(Tiền lãi đầu tư)' : '(Tiền lời góp
+                       <p style="font-size: 12px; color #ccc; margin-bottom :0">{{ $invest->type == 1 ? '(Hoàn tiền đầu tư)' : '(Tiền lời góp
                         vốn)'}}</p>
                     </td>
                 @elseif($invest->status == 3)
                     <td style="width: 150px">
                         <p style="margin-bottom :0"> - {{ number_format($invest->amount) }} VND</p>
-                        <p style="font-size: 12px; color #ccc; margin-bottom :0">{{ $invest->type == 1 ? '(Tiền lãi đầu tư)' : '(Tiền lời góp
+                        <p style="font-size: 12px; color #ccc; margin-bottom :0">{{ $invest->type == 1 ? '(Hoàn tiền đầu tư)' : '(Tiền lời góp
                             vốn)'}}</p>
                     </td>
                 @else
                 <td style="width: 150px">
                     <p style="color: rgb(255, 166, 0);margin-bottom :0">{{ number_format($invest->amount) }} VND</p>
-                    <p style="font-size: 12px; color #ccc; margin-bottom :0">{{ $invest->type == 1 ? '(Tiền lãi đầu tư)' : '(Tiền lời
+                    <p style="font-size: 12px; color #ccc; margin-bottom :0">{{ $invest->type == 1 ? '(Hoàn tiền đầu tư)' : '(Tiền lời
                         góp vốn)'}}</p>
                 </td>
                 @endif
@@ -60,14 +60,14 @@
                 </td> --}}
                 <td>
                     @if($invest->status == 0)
-                    <span class="badge badge-warning" style="color: #000">{{ $invest->balance }}</span>
+                    <span class="badge badge-warning" style="color: #000">{{ number_format($invest->balance) }}</span>
                     @elseif($invest->status == 1)
-                    <span class="badge badge-success" style="color: #000">{{ $invest->balance }}</span>
+                    <span class="badge badge-success" style="color: #000">{{ number_format($invest->balance) }}</span>
                     @elseif($invest->status == 2)
-                    <span class="badge badge-success" style="color: #000">{{ $invest->balance + ($invest->amount * $invest->product->profit_everyday / 100) }}</span>
+                    <span class="badge badge-success" style="color: #000">{{ number_format($invest->balance + ($invest->amount * $invest->product->profit_everyday / 100)) }}</span>
                     @else
                     <span class="badge badge-danger" style="color: #000">{{
-                        $invest->balance +  $invest->product->min_invest }}</span>
+                       number_format($invest->balance +  $invest->product->min_invest) }}</span>
                     @endif
                 </td>
                 <td>{{ $invest->created_at }}</td>
