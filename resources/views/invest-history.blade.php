@@ -19,7 +19,7 @@
             @foreach($invests as $invest)
             <tr>
                 {{-- <td>
-                    <a style="color: #0a53be !important;" href="{{route('product-detail', $invest->product->slug)}}">
+                    <a style="color: #8da5c9 !important;" href="{{route('product-detail', $invest->product->slug)}}">
                         {{ $invest->product->name }}
                     </a>
                 </td> --}}
@@ -29,11 +29,15 @@
                     <p>{{ $invest->type == 1 ? 'Tiền lãi đầu tư' : 'Tiền lời góp vốn'}}</p>
                 </td>
                 @elseif($invest->status == 2)
-                    <td style="color: green"> + {{ number_format($invest->amount) }} VND</td>
-                    <p>{{ $invest->type == 1 ? 'Tiền lãi đầu tư' : 'Tiền lời góp vốn'}}</p>
+                    <td style="color: green">
+                        <p style="color: rgb(255, 166, 0)"> + {{ number_format($invest->amount) }} VND</p>
+                        <p>{{ $invest->type == 1 ? 'Tiền lãi đầu tư' : 'Tiền lời góp vốn'}}</p>
+                    </td>
                 @elseif($invest->status == 3)
-                    <td style="color: red"> - {{ number_format($invest->amount) }} VND</td>
-                    <p>{{ $invest->type == 1 ? 'Tiền lãi đầu tư' : 'Tiền lời góp vốn'}}</p>
+                    <td style="color: red">
+                        <p style="color: rgb(255, 166, 0)"> - {{ number_format($invest->amount) }} VND</p>
+                        <p>{{ $invest->type == 1 ? 'Tiền lãi đầu tư' : 'Tiền lời góp vốn'}}</p>
+                    </td>
                 @else
                 @endif
                 {{-- <td>
