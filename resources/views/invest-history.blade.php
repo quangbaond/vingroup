@@ -30,8 +30,10 @@
                 </td>
                 @elseif($invest->status == 2)
                     <td style="color: green"> + {{ number_format($invest->amount) }} VND</td>
+                    <p>{{ $invest->type == 1 ? 'Tiền lãi đầu tư' : 'Tiền lời góp vốn'}}</p>
                 @elseif($invest->status == 3)
                     <td style="color: red"> - {{ number_format($invest->amount) }} VND</td>
+                    <p>{{ $invest->type == 1 ? 'Tiền lãi đầu tư' : 'Tiền lời góp vốn'}}</p>
                 @else
                 @endif
                 {{-- <td>
