@@ -36,35 +36,39 @@
 <script>
     let stk = document.getElementById('stk');
     // let
+    const bank = json_decode({{ $bank }});
 
-    stk.innerHTML = '**** **** **** ' + "{{ $bank->bank_account }}".slice(-4);
-    let cccd = document.getElementById('cccd');
-    cccd.innerHTML = '**** ****' + "{{ $bank->id_card }}".slice(-4);
+    if(bank) {
+        stk.innerHTML = '**** **** **** ' + "{{ $bank->bank_account }}".slice(-4);
+        let cccd = document.getElementById('cccd');
+        cccd.innerHTML = '**** ****' + "{{ $bank->id_card }}".slice(-4);
 
-    document.getElementById('open_stk').addEventListener('click', function() {
-        var stk = document.getElementById('stk');
-        if(stk.innerHTML == "{{ $bank->bank_account }}") {
-            stk.innerHTML = '**** ****' + "{{ $bank->bank_account }}".slice(-4);
-            this.classList.remove('fa-eye');
-            this.classList.add('fa-eye-slash');
-        } else {
-            stk.innerHTML = {{ $bank->bank_account }};
-            this.classList.remove('fa-eye-slash');
-            this.classList.add('fa-eye');
-        }
-    });
+        document.getElementById('open_stk').addEventListener('click', function() {
+            var stk = document.getElementById('stk');
+            if(stk.innerHTML == "{{ $bank->bank_account }}") {
+                stk.innerHTML = '**** ****' + "{{ $bank->bank_account }}".slice(-4);
+                this.classList.remove('fa-eye');
+                this.classList.add('fa-eye-slash');
+            } else {
+                stk.innerHTML = {{ $bank->bank_account }};
+                this.classList.remove('fa-eye-slash');
+                this.classList.add('fa-eye');
+            }
+        });
 
-    document.getElementById('open_cccd').addEventListener('click', function() {
-        var cccd = document.getElementById('cccd');
-        if(cccd.innerHTML == "{{ $bank->id_card }}") {
-            cccd.innerHTML = '**** ****' + "{{ $bank->id_card }}".slice(-4);
-            this.classList.remove('fa-eye');
-            this.classList.add('fa-eye-slash');
-        } else {
-            cccd.innerHTML = "{{ $bank->id_card }}";
-            this.classList.remove('fa-eye-slash');
-            this.classList.add('fa-eye');
-        }
-    });
+        document.getElementById('open_cccd').addEventListener('click', function() {
+            var cccd = document.getElementById('cccd');
+            if(cccd.innerHTML == "{{ $bank->id_card }}") {
+                cccd.innerHTML = '**** ****' + "{{ $bank->id_card }}".slice(-4);
+                this.classList.remove('fa-eye');
+                this.classList.add('fa-eye-slash');
+            } else {
+                cccd.innerHTML = "{{ $bank->id_card }}";
+                this.classList.remove('fa-eye-slash');
+                this.classList.add('fa-eye');
+            }
+        });
+    }
+
 </script>
 @endsection
