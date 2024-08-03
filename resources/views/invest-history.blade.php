@@ -65,7 +65,7 @@
                     @elseif($invest->status == 2)
                     <span  style="color: #000">{{ number_format($invest->balance + ($invest->amount * $invest->product->profit_everyday / 100)) }}</span>
                     @else
-                    <span class="badge badge-danger" style="color: #000">{{
+                    <span style="color: #000">{{
                        number_format($invest->balance +  $invest->product->min_invest) }}</span>
                     @endif
                 </td>
